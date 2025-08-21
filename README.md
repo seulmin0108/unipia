@@ -1,5 +1,3 @@
-[main.html](https://github.com/user-attachments/files/21919730/main.html)# unipia
-
 <!doctype html>
 <html lang="ko">
 <head>
@@ -189,4 +187,4 @@
 
   <script src="app.js"></script>
 </body>
-</html>main.html…]()
+</html>
