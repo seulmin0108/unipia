@@ -17,6 +17,9 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Firebase -->
+    <script type="module" src="js/firebase-config.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -335,11 +338,6 @@
             <h2 class="section-title">Our Activities</h2>
             
             <div class="activities-wrapper">
-                <!-- Left Arrow -->
-                <button class="activity-arrow activity-arrow-left">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
                 <!-- Activities Grid -->
                 <div class="activities-grid">
 
@@ -375,11 +373,6 @@
                         <img src="Images/activity/OA9_180x240.png" alt="Activity 9">
                     </div>
                 </div>
-                
-                <!-- Right Arrow -->
-                <button class="activity-arrow activity-arrow-right">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
         </div>
     </section>
@@ -464,19 +457,20 @@
             </div>
         </div>
 
-    <!-- Footer - Get In Touch Section -->
-        <div class="footer-contact">
-            <div class="container">
+    </section>
+
+    <!-- Combined Footer Section - Get In Touch & Download -->
+    <section class="footer-combined">
+        <div class="footer-content">
+            <!-- Get In Touch Section -->
+            <div class="footer-touch">
                 <h2>Get In Touch</h2>
                 <p>Let's get the conversation started. Ask us anything about UNIPIA, and we'll<br>happily reply within 3 days.</p>
-                
                 <a href="coming-soon.html" class="contact-btn">Contact Us</a>
             </div>
-        </div>
-
-<!-- Footer - Download Section -->
-        <div class="footer-download">
-            <div class="container">
+            
+            <!-- Download Section -->
+            <div class="footer-download-section">
                 <h3>Download our App and get connected!</h3>
                 <div class="footer-app-buttons">
                     <a href="https://play.google.com/store/apps/details?id=com.unipia.unipia&hl=ko" class="footer-app-btn" target="_blank">
