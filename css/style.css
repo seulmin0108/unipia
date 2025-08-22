@@ -1,0 +1,972 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+
+.hero, .community, .activities {
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.nav{
+  position:sticky; 
+  top:0;
+  background:rgba(255,255,255,.75);
+  backdrop-filter:saturate(120%) blur(8px);
+  border-bottom:1px solid #eee; z-index:10;
+}
+
+.nav-container {
+    /* 내용물을 담을 최대 너비 설정 */
+    max-width: 1440px;
+    /* 컨테이너 자체를 중앙 정렬 */
+    margin: 0 auto;
+
+    height: 100%; /* 부모 높이를 그대로 사용 */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 24px; /* 좌우 여백 */
+}
+
+.nav-left{justify-self:start; 
+  display:flex; 
+  align-items:center; 
+  gap:10px
+}
+
+.brand{display:flex; 
+  align-items:center; 
+  gap:10px; 
+  text-decoration:none; 
+  color:var(--fg)
+}
+
+.brand-logo{width:34px; 
+  height:34px; 
+  display:block
+}
+
+.brand-text{font-weight:700; 
+  letter-spacing:.4px
+}
+
+.nav-center {
+  display: flex;  /* 가로 배치 */
+  justify-content: center;  /* 중앙 정렬 */
+  align-items: center;  /* 세로 중앙 정렬 */
+  gap: 50px;  /* 두 메뉴 항목 사이에 간격 */
+}
+
+.nav-feature {
+  margin-bottom: 0px; /* 위쪽 간격 */
+}
+
+.nav-business {
+  text-align: center;
+}
+
+.nav-link {
+  font-size: 16px;
+  font-weight: 600; 
+  color: #404357;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;  /* 중앙 정렬 */
+  padding: 10px;
+}
+
+.nav-link:hover {
+  opacity: 0.85;
+}
+
+.nav-right{justify-self:end; 
+  display:flex; 
+  gap:14px
+}
+
+.icon-btn{
+  width:34px; height:34px; display:grid; place-items:center; border-radius:12px;
+  background:#f6f7fb; cursor:pointer; border:1px solid #eef0f5;
+}
+.icon-btn svg{width:18px; height:18px; stroke:#34384c; fill:none; stroke-width:1.6}
+.icon-btn svg circle[fill]{fill:#34384c}
+
+/*Menu section*/
+/* 메뉴 버튼과 드롭다운을 감싸는 컨테이너 */
+.nav-menu-container {
+    position: relative; /* 드롭다운 메뉴의 기준점이 됨 */
+}
+
+/* 드롭다운 메뉴 (기본 상태: 숨김) */
+.dropdown-menu {
+    position: absolute;
+    top: 120%; /* 아이콘 아래에 위치 (값 조절 가능) */
+    right: 0;  /* 오른쪽 정렬 */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 200px; /* 메뉴 너비 */
+    padding: 8px 0;
+    z-index: 20;
+
+    /* 부드러운 등장을 위한 설정 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+/* JavaScript로 .show 클래스가 추가되면 메뉴를 보여줌 */
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 드롭다운 메뉴 안의 링크 스타일 */
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* 링크에 마우스를 올렸을 때 스타일 */
+.dropdown-menu a:hover {
+    background-color: #f5f5f5;
+}
+
+/* Hero Section */
+.hero {
+    background: white;
+    padding: 12% 0 15.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.hero-logo {
+    width: 234px;
+    height: 271px;
+    object-fit: contain;
+}
+
+.hero-brand-img {
+    width: 280px;
+    margin-top: 0px;    /* Increase to move it down */
+    margin-bottom: 20px;
+
+    height: auto;
+    object-fit: contain;
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1.2;
+}
+
+.hero-text {
+    margin-bottom: 15px;
+}
+
+.campus-hub-img {
+    width: auto;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 4px;
+}
+
+.star {
+    color: #6B46FF;
+    font-size: 24px;
+    margin-left: 8px;
+    vertical-align: super;
+}
+
+.brand-title {
+    font-size: 52px;
+    font-weight: 900;
+    color: #1a1a1a;
+    letter-spacing: .2px;
+    margin-bottom: 1px;
+}
+
+.app-description {
+    color: #999;
+    font-size: 18px;
+    font-weight: 400;
+
+    margin-top: -5px;
+    margin-bottom: 10%;
+    letter-spacing: 0.3px;
+}
+
+.app-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.store{
+    display:inline-block; 
+    transform:translateZ(0)
+}
+
+.app-btn img {
+    height: 58px;
+    border-radius: 8px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.app-btn:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+/* Community Section with Slider */
+.community {
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    padding: 4% 0 8%;
+    position: relative;
+    overflow: hidden;
+}
+
+.community-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+}
+
+/* Slide Content */
+.slide-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.slide-content.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+    pointer-events: auto;
+}
+
+.slide-content.prev {
+    transform: translateX(-100%);
+}
+
+.slide-content.next {
+    transform: translateX(100%);
+}
+
+/* Slide Navigation Arrows */
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #E5E5E5;
+    border: none;
+    color: #000;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-arrow:hover {
+    background: #D0D0D0;
+    color: #000;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.slide-arrow-left {
+    left: 40px;
+}
+
+.slide-arrow-right {
+    right: 40px;
+}
+
+.section-title {
+    font-size: 52px;
+    font-weight: 800;
+    text-align: left;
+    margin-bottom: 30px;
+    margin-left: 0;
+    margin-top: 0;
+    color: #000;
+}
+
+.community-left .section-title {
+    font-size: 52px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.community-left h2{
+    font-size: 52px;
+}
+
+/* Coming Soon specific styling */
+.coming-soon-left {
+    flex: 0 0 300px !important;
+    max-width: 300px !important;
+    padding-right: 0 !important;
+}
+
+.coming-soon-left .section-title {
+    white-space: nowrap;
+    position: relative !important;
+    top: auto !important;
+    left: 0 !important;
+}
+
+.board-sections {
+    margin-top: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.community-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 60px 40px 0;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Left Content */
+.community-left {
+    flex: 1;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 0px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 0;
+    position: relative;
+}
+
+.board-section h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: #000;
+}
+
+.board-list {
+    list-style: none;
+    padding: 0;
+}
+
+.board-list li {
+    color: #555;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.board-list li:before {
+    content: "●";
+    color: #6B46FF;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+
+
+/* Center iPhone */
+.community-center {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 50px 30px 0;
+    position: relative;
+}
+
+.iphone-mockup {
+    width: 340px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+}
+
+/* Mockup Overlay Text */
+.mockup-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+    display: none; /* Hide overlay text on mockups */
+}
+
+.mockup-overlay h3 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #6B46FF;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* Right Features */
+.community-right {
+    flex: 1;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-left: 20px;
+    padding-top: 200px;
+}
+
+.feature-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.feature-dot {
+    width: 24px;
+    height: 24px;
+    background: #6B46FF;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.feature-box h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #000;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.feature-box p {
+    color: #666;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Activities Section */
+.activities {
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 5% 0 12%; 
+    position: relative;
+    overflow: hidden;
+}
+
+.activities .section-title{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.activities-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+/* Vertical lines on sides */
+
+.activities-grid {
+    display: grid;
+    grid-template-rows: 240px 240px;
+    gap: 12px;
+    width: 100%;
+    max-height: 660px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.activity-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f5f5f5;
+}
+
+.activity-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.activity-item:hover img {
+    transform: scale(1.05);
+}
+
+/*아오 내 1시간 */
+
+.activity-item.small:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.activity-item.small:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.activity-item.small:nth-child(3) {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 3;
+}
+
+.activity-item.small:nth-child(4) {
+    grid-column: 3/ span 2;
+    grid-row: 1 / span 2;
+}
+
+.activity-item.small:nth-child(5) {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.activity-item.small:nth-child(6) {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+.activity-item.small:nth-child(7) {
+    grid-column: 5/ span 2;
+    grid-row: 1 / span 2;
+}
+
+.activity-item.small:nth-child(8) {
+    grid-column: 5;
+    grid-row: 3;
+}
+
+.activity-item.small:nth-child(9) {
+    grid-column: 6;
+    grid-row: 3;
+}
+
+/* Activity Arrows */
+.activity-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-size: 20px;
+    color: #333;
+}
+
+.activity-arrow:hover {
+    background: #6B46FF;
+    color: white;
+    border-color: #6B46FF;
+}
+
+.activity-arrow-left {
+    left: -70px;
+}
+
+.activity-arrow-right {
+    right: -70px;
+}
+
+/* Remove connecting lines from arrows since we have vertical lines */
+
+/* Slick Slider Custom Styles */
+.slick-prev,
+.slick-next {
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: #6B46FF;
+    font-size: 30px;
+}
+
+.slick-dots {
+    bottom: -40px;
+}
+
+.slick-dots li button:before {
+    color: #6B46FF;
+    font-size: 12px;
+}
+
+/* Advertising Section */
+.advertising {
+    padding: 100px 0;
+    background: #f8f9fa;
+}
+
+.advertising .section-title{
+    font-size: 54px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* 두 개의 광고 아이템을 가로로 배치하는 컨테이너 */
+.advertising-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; /* 두 광고 아이템 사이의 간격 */
+    margin-top: 10px;
+    justify-items: center;
+}
+
+.ad-mockup{
+    text-align: center;
+}
+
+
+.ad-description-img {
+    width: 100%;
+    max-width: 570px;
+    height: auto;
+    margin: 0 auto 30px;
+    display: block;
+}
+
+.ad-description h3{
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.ad-description p{
+    color: #666;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 폰 목업 스타일 */
+
+.phone-frame {
+ /* ... 기존 .phone-frame 스타일 ... */
+    width: 100%;
+    max-width: 320px; /* 폰 목업 크기 */
+    z-index: 2;/* 설명 박스보다 위에 오도록 설정 */
+    position: relative; /* z-index 적용을 위해 필요 */
+    }
+
+/* Partners Section */
+.partners {
+    padding: 6% 0 20%;
+    background: white;
+}
+
+.partners .section-title {
+    font-size: 54px;
+    text-align: center;
+    
+    margin-bottom: 10%;
+}
+
+/* 모든 로고 줄의 기본 스타일 */
+.partners-row {
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+}
+
+/* 고정된 로고 줄 스타일 */
+.static-row {
+    justify-content: center; /* 로고들을 가운데 정렬 */
+    gap: 40px; /* 로고 사이 간격 */
+}
+
+/* 스크롤되는 로고 줄 스타일 */
+.scrolling-row {
+    overflow: hidden; /* 영역을 벗어나는 로고 숨김 */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.partners-track {
+    display: flex;
+    flex-shrink: 0; /* 줄어들지 않도록 설정 */
+}
+
+/* 로고 개별 스타일 */
+.partner-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 40px; /* 로고 좌우 여백 */
+    height: 80px; /* 로고를 담는 박스 높이 */
+    max-height: 180px; /* 이미지 최대 높이 */
+    max-width: 300px; /* 이미지 최대 너비 */
+}
+
+.partner-logo img {
+    max-height: 180px; /* 이미지 최대 높이 */
+    max-width: 280px; /* 이미지 최대 너비 */
+}
+
+.partner-logo:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* 무한 스크롤 애니메이션 */
+.scroll-left {
+    animation: scroll 30s linear infinite;
+}
+
+.scroll-right {
+    animation: scroll-reverse 30s linear infinite;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
+
+/* Footer - Get In Touch Section */
+.footer-contact {
+    background: #1a1a1a;
+    color: white;
+    padding: 10% 0 10%; 
+    text-align: center;
+}
+
+.footer-contact h2 {
+    font-size: 52px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.footer-contact p {
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.footer-contact a {
+    color: #6B46FF;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 8px 40px;
+    background: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Footer - Download Section */
+.footer-download {
+    background: #6B46FF;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.footer-download h3 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.footer-app-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-app-btn img {
+    height: 60px;
+    transition: transform 0.3s;
+}
+
+.footer-app-btn:hover img {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 60px;
+    }
+    
+    .hero-left {
+        order: 1;
+    }
+    
+    .hero-right {
+        order: 2;
+        text-align: center;
+    }
+    
+    .hero-logo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .hero-brand-img {
+        width: 180px;
+    }
+    
+    .hero-text h1 {
+        font-size: 28px;
+    }
+    
+    .brand-title {
+        font-size: 48px;
+    }
+    
+    .app-buttons {
+        justify-content: center;
+    }
+    
+    .community-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .iphone-mockup {
+        width: 200px;
+    }
+    
+    .phone-mockup {
+        text-align: center;
+    }
+    
+    .additional-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .advertising-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+    
+    #contactForm {
+        flex-direction: column;
+    }
+}

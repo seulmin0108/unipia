@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIPIA - Your Campus Hub</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="nav" role="navigation" aria-label="Top">
+        <div class="nav-container">
+        <a href="#" class="brand nav-left" aria-label="UNIPIA Home">
+          <img src="Images/U로고.png" alt="UNIPIA" class="brand-logo" />
+          <span class="brand-text">UNIPIA</span>
+        </a>
+    
+        <div class="nav-center">
+          <nav class="nav-feature">
+            <a class="nav-link" href="#features">Features</a>
+          </nav>
+          <nav class="nav-business">
+            <a class="nav-link" href="#biz">
+              Business<br>Inquiry
+            </a>
+          </nav>
+        </div>
+    
+        <div class="nav-right">
+          <a class="icon-btn" href="https://instagram.com" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1.2"/>
+            </svg>
+          </a>
+          <a class="icon-btn" href="mailto:hello@unipia.app" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6h18v12H3z" fill="none" />
+              <path d="M3 7l9 7 9-7" fill="none"/>
+            </svg>
+          </a>
+
+          <!-- Menu bar -->
+          <div class="nav-menu-container">
+            <button class="icon-btn" id="menu-toggle" aria-label="Open Menu">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="5" r="2"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                    <circle cx="12" cy="19" r="2"></circle>
+                </svg>
+            </button>
+            <div class="dropdown-menu">
+                <a href="#community-section">Community</a>
+                <a href="#marketplace-section">Marketplace</a>
+                <a href="#employment-section">Employment</a>
+                <a href="#coming-soon-section">Coming Soon</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <img src="Images/U로고.png" alt="UNIPIA Logo" class="hero-logo">
+                    <img src="Images/Unipia_font.png" alt="UNIPIA" class="hero-brand-img">
+                </div>
+                
+                <div class="hero-right">
+                    <div class="hero-text">
+                        <img src="Images/YCH.png" alt="Your Campus Hub" class="campus-hub-img">
+                        <h2 class="brand-title">UNIPIA</h2>
+                    </div>
+                    
+                    <p class="app-description">Connect with campus life in UNIPIA</p>
+                    
+                    <!-- App Store Buttons -->
+                    <div class="app-buttons">
+                        <a id="btnAppStore" href="https://apps.apple.com" class="app-btn" target="_blank" rel="noopener">
+                            <img src="Images/Appstore.png" alt="Download on App Store">
+                        </a>
+                        <a id="btnGooglePlay" href="https://play.google.com" class="app-btn" target="_blank" rel="noopener">
+                            <img src="Images/Googlestore.png" alt="Get it on Google Play">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section with Slider -->
+    <section class="community">
+        <div class="community-container">
+            <!-- Slide Navigation Arrows -->
+            <button class="slide-arrow slide-arrow-left" onclick="changeSlide(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slide-arrow slide-arrow-right" onclick="changeSlide(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- Slide 1: Community -->
+            <div class="slide-content active" data-slide="1" id="community-section">
+                <div class="community-content">
+                    <!-- Left Content -->
+                    <div class="community-left">
+                        <h2 class="section-title">Community</h2>
+                        <div class="board-sections">
+                            <div class="board-section">
+                                <h3>My School Board</h3>
+                                <ul class="board-list">
+                                    <li>Only with same university</li>
+                                    <li>Connect with Alumni</li>
+                                    <li>Sharing Information and Experiences</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="board-section">
+                                <h3>Free Board</h3>
+                                <ul class="board-list">
+                                    <li>Choose Any Topic</li>
+                                    <li>Easy Access and Anonymity</li>
+                                    <li>Real-Time Communication</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Center iPhone Mockup -->
+                    <div class="community-center">
+                        <img src="Images/Iphone_1.png" alt="Community App Screen" class="iphone-mockup">
+                    </div>
+                    
+                    <!-- Right Features -->
+                    <div class="community-right">
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Tabs</h4>
+                                <p>Easily switch between various boards to explore everything in one place.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Dashboard</h4>
+                                <p>Connect with others quickly through real-time chats and instant updates.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Users & Accounts</h4>
+                                <p>Follow users you like and enjoy 1:1 conversations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Marketplace -->
+            <div class="slide-content" data-slide="2" id="marketplace-section">
+                <div class="community-content">
+                    <!-- Left Content -->
+                    <div class="community-left">
+                        <h2 class="section-title">Marketplace</h2>
+                        <div class="board-sections">
+                            <div class="board-section">
+                                <h3>File Trading</h3>
+                                <ul class="board-list">
+                                    <li>Lecture notes</li>
+                                    <li>PPT/Essay templates</li>
+                                    <li>Tickets</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="board-section">
+                                <h3>Convenient Listing<br>& Discovery</h3>
+                                <ul class="board-list">
+                                    <li>Quick item posting</li>
+                                    <li>Mobile & On-the-Go Access</li>
+                                    <li>Opportunities for Student Entrepreneurs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Center iPhone Mockup -->
+                    <div class="community-center">
+                        <img src="Images/marketplace_iphone.png" alt="Marketplace App Screen" class="iphone-mockup">
+                        <div class="mockup-overlay">
+                            <h3>Marketplace</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Features -->
+                    <div class="community-right">
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Quick Item Listing</h4>
+                                <p>List materials with just a few clicks-no hassle, instant visibility for buyers.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Direct Messaging</h4>
+                                <p>Chat directly with buyers and sellers to discuss items, negotiate, and arrange safe transactions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Search Filters</h4>
+                                <p>Find what you need fast by searching or filtering.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Employment -->
+            <div class="slide-content" data-slide="3" id="employment-section">
+                <div class="community-content">
+                    <!-- Left Content -->
+                    <div class="community-left">
+                        <h2 class="section-title">Employment</h2>
+                        <div class="board-sections">
+                            <div class="board-section">
+                                <h3>Job & Internship Listings</h3>
+                                <ul class="board-list">
+                                    <li>Real-time job updates</li>
+                                    <li>Direct link to application page or email</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="board-section">
+                                <h3>Detailed Information</h3>
+                                <ul class="board-list">
+                                    <li>
+                                       Detailed employment information <br> (benefits, hiring process)
+                                    </li>
+                                    <li>Easy-to-read design</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Center iPhone Mockup -->
+                    <div class="community-center">
+                        <img src="Images/emptymockup.png" alt="Employment App Screen" class="iphone-mockup">
+                        <div class="mockup-overlay">
+                            <h3>Employment</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Features -->
+                    <div class="community-right">
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Diverse Opportunities</h4>
+                                <p>Offers job opportunities across diverse industries and positions, locally and globally.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Student-Friendly</h4>
+                                <p>Plenty of flexible and short-term positions that fit alongside your studies.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box">
+                            <div class="feature-dot"></div>
+                            <div class="feature-content">
+                                <h4>Easy-to-View Listings</h4>
+                                <p>Clean UI and categorized postings make it easy to find the opportunities you want at a glance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Coming Soon -->
+            <div class="slide-content" data-slide="4" id="coming-soon-section">
+                <div class="community-content">
+                    <!-- Left Content -->
+                    <div class="community-left coming-soon-left">
+                        <h2 class="section-title">Coming Soon</h2>
+                    </div>
+                    
+                    <!-- Center iPhone Mockup -->
+                    <div class="community-center">
+                        <img src="Images/Comingsoon.png" alt="Coming Soon Screen" class="iphone-mockup">
+                        <div class="mockup-overlay">
+                            <h3>Coming Soon</h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Right placeholder for balance -->
+                    <div class="community-right">
+                        <!-- Empty for balance -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Activities Section -->
+    <section class="activities">
+        <div class="container">
+            <h2 class="section-title">Our Activities</h2>
+            
+            <div class="activities-wrapper">
+                <!-- Left Arrow -->
+                <button class="activity-arrow activity-arrow-left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <!-- Activities Grid -->
+                <div class="activities-grid">
+
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA1_180x240.png" alt="Activity 1">
+                    </div>
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA2_180x240.png" alt="Activity 2">
+                    </div>
+                    
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA3_381x507.png" alt="Activity 3">
+                    </div>
+                    
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA4_374x499.png" alt="Activity 4">
+                    </div>
+                    
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA5_180x240.png" alt="Activity 5">
+                    </div>
+                    
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA6_180x240.png" alt="Activity 6">
+                    </div>
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA7_374x499.png" alt="Activity 7">
+                    </div>
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA8_180x240.png" alt="Activity 8">
+                    </div>
+                    <div class="activity-item small">
+                        <img src="Images/activity/OA9_180x240.png" alt="Activity 9">
+                    </div>
+                </div>
+                
+                <!-- Right Arrow -->
+                <button class="activity-arrow activity-arrow-right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advertising Section -->
+    <section class="advertising">
+        <div class="container">
+            <h2 class="section-title">Advertising</h2>
+            
+            <div class="advertising-content">
+                <div class="ad-mockup left-mockup">
+
+                        <img src="Images/Advertising/Advertising_left.png" alt="General Advertisement 설명 이미지" class="ad-description-img">
+
+                    <div class="ad-description">
+                        <h3>General Advertisement Posts</h3>
+                        <p>You can easily create and share advertisement posts by<br>uploading photos, adding a catchy title, and providing<br>detailed content. Target your posts to specific universities<br>or reach a wider audience by publishing on the general<br>bulletin board. Reply
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="ad-mockup right-mockup">
+
+                        <img src="Images/Advertising/Advertising_Right.png" alt="General Advertisement 설명 이미지" class="ad-description-img">
+
+                    <div class="ad-description">
+                        <h3>HR Advertisement Posts</h3>
+                        <p>Easily create recruitment posts using UNIPIA’s templates to quickly<br>showcase your company and open positions. Attract the right<br>talent by making your job ads clear and visually appealing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Section -->
+    <section class="partners">
+        <div class="container">
+            <h2 class="section-title">Trusted by over +100 UK News Media</h2>
+            
+            <div class="partners-row static-row">
+                <div class="partner-logo"><img src="Images/Partners/ULEADER.png" alt="ULEADER"></div>
+                <div class="partner-logo"><img src="Images/Partners/Victoria news agency.png" alt="Victoria news agency"></div>
+                <div class="partner-logo"><img src="Images/Partners/BRITISHFUTURE.png" alt="BRITISHFUTURE"></div>
+                <div class="partner-logo"><img src="Images/Partners/DEINIOLNEWS.png" alt="DEINIOLNEWS"></div>
+            </div>
+            
+            <div class="partners-row scrolling-row">
+                <div class="partners-track scroll-left">
+                    <div class="partner-logo"><img src="Images/Partners/Yahoo.png" alt="Yahoo"></div>
+                    <div class="partner-logo"><img src="Images/Partners/ConanFinance.png" alt="ConanFinance"></div>
+                    <div class="partner-logo"><img src="Images/Partners/BmHTODAY.png" alt="BmHTODAY"></div>
+                    <div class="partner-logo"><img src="Images/Partners/WDPP.png" alt="WDPP"></div>
+                    <div class="partner-logo"><img src="Images/Partners/GlobeNew.png" alt="GlobeNew"></div>
+                    <div class="partner-logo"><img src="Images/Partners/Yahoo.png" alt="Yahoo"></div>
+                    <div class="partner-logo"><img src="Images/Partners/ConanFinance.png" alt="ConanFinance"></div>
+                    <div class="partner-logo"><img src="Images/Partners/BmHTODAY.png" alt="BmHTODAY"></div>
+                    <div class="partner-logo"><img src="Images/Partners/WDPP.png" alt="WDPP"></div>
+                    <div class="partner-logo"><img src="Images/Partners/GlobeNew.png" alt="GlobeNew"></div>
+                </div>
+            </div>
+    
+            <div class="partners-row scrolling-row">
+                <div class="partners-track scroll-right">
+                    <div class="partner-logo"><img src="Images/Partners/GlasgowTR.png" alt="GlasgowTR"></div>
+                    <div class="partner-logo"><img src="Images/Partners/LOND.png" alt="LOND"></div>
+                    <div class="partner-logo"><img src="Images/Partners/BENM.png" alt="BENM"></div>
+                    <div class="partner-logo"><img src="Images/Partners/ULSTERGROWTH.png" alt="ULSTERGROWTH"></div>
+                    <div class="partner-logo"><img src="Images/Partners/DOYL.png" alt="DOYL"></div>
+                    <div class="partner-logo"><img src="Images/Partners/GlasgowTR.png" alt="GlasgowTR"></div>
+                    <div class="partner-logo"><img src="Images/Partners/LOND.png" alt="LOND"></div>
+                    <div class="partner-logo"><img src="Images/Partners/BENM.png" alt="BENM"></div>
+                    <div class="partner-logo"><img src="Images/Partners/ULSTERGROWTH.png" alt="ULSTERGROWTH"></div>
+                    <div class="partner-logo"><img src="Images/Partners/DOYL.png" alt="DOYL"></div>
+                </div>
+            </div>
+            
+            <div class="partners-row static-row">
+                <div class="partner-logo"><img src="Images/Partners/ULEADER.png" alt="ULEADER"></div>
+                <div class="partner-logo"><img src="Images/Partners/Victoria news agency.png" alt="Victoria news agency"></div>
+                <div class="partner-logo"><img src="Images/Partners/BRITISHFUTURE.png" alt="BRITISHFUTURE"></div>
+                <div class="partner-logo"><img src="Images/Partners/DEINIOLNEWS.png" alt="DEINIOLNEWS"></div>
+            </div>
+        </div>
+
+    <!-- Footer - Get In Touch Section -->
+        <div class="footer-contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>Let's get the conversation started. Ask us anything about UNIPIA, and we'll<br>happily reply within 3 days.</p>
+                
+                <a href="coming-soon.html" class="contact-btn">Contact Us</a>
+            </div>
+        </div>
+
+<!-- Footer - Download Section -->
+        <div class="footer-download">
+            <div class="container">
+                <h3>Download our App and get connected!</h3>
+                <div class="footer-app-buttons">
+                    <a href="https://play.google.com/store/apps/details?id=com.unipia.unipia&hl=ko" class="footer-app-btn" target="_blank">
+                        <img src="Images/Googlestore.png" alt="Google Play">
+                    </a>
+                    <a href="https://apps.apple.com/us/app/unipia/id1608830229?l=ko" class="footer-app-btn" target="_blank">
+                        <img src="Images/Appstore.png" alt="App Store">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Slick Carousel JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
