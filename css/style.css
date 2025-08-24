@@ -635,41 +635,7 @@ html {
     grid-row: 3;
 }
 
-/* Activity Arrows */
-.activity-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: white;
-    border: 2px solid #e0e0e0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-    font-size: 20px;
-    color: #333;
-}
-
-.activity-arrow:hover {
-    background: #6B46FF;
-    color: white;
-    border-color: #6B46FF;
-}
-
-.activity-arrow-left {
-    left: -70px;
-}
-
-.activity-arrow-right {
-    right: -70px;
-}
-
-/* Remove connecting lines from arrows since we have vertical lines */
+/* Activity Arrows - Removed */
 
 /* Slick Slider Custom Styles */
 .slick-prev,
@@ -752,8 +718,12 @@ html {
 
 /* Partners Section */
 .partners {
-    padding: 6% 0 20%;
+    padding: 6% 0 6%;
     background: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .partners .section-title {
@@ -828,39 +798,65 @@ html {
     to { transform: translateX(0); }
 }
 
-/* Footer - Get In Touch Section */
-.footer-contact {
+/* Combined Footer Section */
+.footer-combined {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+/* Get In Touch Part - Top Half */
+.footer-touch {
     background: #1a1a1a;
-    color: white;
-    padding: 10% 0 10%; 
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 0 20px;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.footer-contact h2 {
+.footer-touch h2 {
     font-size: 52px;
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
 }
 
-.footer-contact p {
-    color: #ffffff;
+.footer-touch p {
+    color: rgba(255, 255, 255, 0.85);
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 40px;
-}
-
-.footer-contact a {
-    color: #6B46FF;
-    font-size: 22px;
-    font-weight: 800;
+    max-width: 600px;
 }
 
 .contact-btn {
     display: inline-block;
-    padding: 8px 40px;
+    padding: 14px 50px;
     background: white;
+    color: #6B46FF;
     text-decoration: none;
     border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -869,34 +865,42 @@ html {
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }
 
-/* Footer - Download Section */
-.footer-download {
+/* Download Part - Bottom Half */
+.footer-download-section {
     background: #6B46FF;
-    color: white;
-    padding: 60px 0;
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 0 20px;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.footer-download h3 {
-    font-size: 36px;
+.footer-download-section h3 {
+    font-size: 38px;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    color: white;
 }
 
 .footer-app-buttons {
     display: flex;
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
     align-items: center;
 }
 
 .footer-app-btn img {
-    height: 60px;
+    height: 55px;
     transition: transform 0.3s;
 }
 
 .footer-app-btn:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 /* Responsive Design */
