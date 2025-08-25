@@ -32,7 +32,7 @@
 
 ## 프로젝트 개요
 
-UNIPIA는 다음과 같은 기능을 제공하는 캠퍼스 앱입니다:
+UNIPIA는 다음과 같은 기능을 제공하는 캠퍼스 앱입니다
 - **Community**: 학교별 게시판 및 자유 게시판
 - **Marketplace**: 강의 자료, 티켓 거래 플랫폼
 - **Employment**: 취업 및 인턴십 정보
@@ -212,5 +212,6 @@ add_header Referrer-Policy "strict-origin-when-cross-origin";
 - [ ] UK GDPR 준수를 위한 보안 헤더가 설정되었는지 확인
 - [ ] 도메인 연결이 완료되었는지 확인
 - [ ] 백업 및 모니터링이 설정되었는지 확인
+
 
 
