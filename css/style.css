@@ -24,7 +24,11 @@ html {
 
 
 .hero, .community, .activities {
+    height: 100vh;
     min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
 /* Header Styles */
@@ -161,7 +165,7 @@ html {
 /* Hero Section */
 .hero {
     background: white;
-    padding: 12% 0 15.5%;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +175,11 @@ html {
 .hero-container {
     width: 100%;
     max-width: 1200px;
+    height: 100%;
     padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
@@ -275,7 +283,7 @@ html {
     background: #f5f5f5;
     display: flex;
     align-items: center;
-    padding: 4% 0 8%;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
@@ -283,14 +291,13 @@ html {
 .community-container {
     width: 100%;
     max-width: 1400px;
+    height: 100%;
     margin: 0 auto;
     padding: 0 20px;
-    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    
 }
 
 /* Slide Content */
@@ -369,11 +376,10 @@ html {
 
 .community-left .section-title {
     font-size: 52px;
-    margin-bottom: 0;
+    margin-bottom: 40px;
     margin-top: 0;
     padding-left: 0;
-    position: absolute;
-    top: 0;
+    position: relative;
 }
 
 .community-left h2{
@@ -395,19 +401,21 @@ html {
 }
 
 .board-sections {
-    margin-top: 220px;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    justify-content: center;
+    gap: 40px;
+    height: 100%;
 }
 
 .community-content {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    gap: 60px;
-    padding: 60px 40px 0;
+    gap: 40px;
+    padding: 40px;
     max-width: 1400px;
+    height: calc(100vh - 80px);
     margin: 0 auto;
 }
 
@@ -460,8 +468,8 @@ html {
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    margin: 50px 30px 0;
+    align-items: center;
+    margin: 0 30px;
     position: relative;
 }
 
@@ -500,9 +508,9 @@ html {
     max-width: 350px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    justify-content: center;
+    gap: 30px;
     padding-left: 20px;
-    padding-top: 200px;
 }
 
 .feature-box {
@@ -541,14 +549,16 @@ html {
     background: white;
     display: flex;
     align-items: center;
-    padding: 5% 0 12%; 
+    justify-content: center;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
 
 .activities .section-title{
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    margin-top: 0;
 }
 
 .activities-wrapper {
@@ -562,10 +572,10 @@ html {
 
 .activities-grid {
     display: grid;
-    grid-template-rows: 240px 240px;
+    grid-template-rows: 1fr 1fr;
     gap: 12px;
     width: 100%;
-    max-height: 660px;
+    height: 60vh;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -662,23 +672,35 @@ html {
 
 /* Advertising Section */
 .advertising {
-    padding: 100px 0;
+    padding: 0;
     background: #f8f9fa;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .advertising .section-title{
     font-size: 54px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
+    margin-top: 0;
 }
 
 /* 두 개의 광고 아이템을 가로로 배치하는 컨테이너 */
 .advertising-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px; /* 두 광고 아이템 사이의 간격 */
-    margin-top: 10px;
+    gap: 60px;
     justify-items: center;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .ad-mockup{
@@ -718,19 +740,22 @@ html {
 
 /* Partners Section */
 .partners {
-    padding: 6% 0 6%;
+    padding: 0;
     background: white;
+    height: 100vh;
     min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .partners .section-title {
     font-size: 54px;
     text-align: center;
-    
-    margin-bottom: 10%;
+    margin-bottom: 60px;
 }
 
 /* 모든 로고 줄의 기본 스타일 */
@@ -902,6 +927,200 @@ html {
 .footer-app-btn:hover img {
     transform: scale(1.08);
 }
+
+/* Viewport-based responsive sizing */
+/* Using vw units for proportional scaling */
+
+/* 13-inch MacBook (1440px width) */
+@media (max-width: 1440px) {
+    .hero-logo {
+        width: 175px;
+        height: 203px;
+    }
+    
+    .hero-brand-img {
+        width: 210px;
+    }
+    
+    .brand-title {
+        font-size: 39px;
+    }
+    
+    .app-description {
+        font-size: 14px;
+        margin-bottom: 5%;
+    }
+    
+    .app-btn img {
+        height: 44px;
+    }
+    
+    .section-title {
+        font-size: 39px;
+    }
+    
+    .community-left .section-title {
+        font-size: 39px;
+    }
+    
+    .iphone-mockup {
+        width: 255px;
+    }
+    
+    .board-section h3 {
+        font-size: 17px;
+    }
+    
+    .board-list li {
+        font-size: 12px;
+    }
+    
+    .feature-box h4 {
+        font-size: 17px;
+    }
+    
+    .feature-box p {
+        font-size: 12px;
+    }
+    
+    .activities-grid {
+        height: 45vh;
+        gap: 8px;
+    }
+    
+    .advertising .section-title,
+    .partners .section-title {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+    
+    .ad-description-img {
+        max-width: 428px;
+    }
+    
+    .ad-description h3 {
+        font-size: 20px;
+    }
+    
+    .ad-description p {
+        font-size: 12px;
+    }
+    
+    .footer-touch h2 {
+        font-size: 39px;
+    }
+    
+    .footer-touch p {
+        font-size: 14px;
+    }
+    
+    .footer-download-section h3 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+    
+    .contact-btn {
+        font-size: 16px;
+        padding: 10px 40px;
+    }
+    
+    .footer-app-btn img {
+        height: 42px;
+    }
+    
+    .community-content {
+        padding: 30px;
+        gap: 30px;
+    }
+    
+    .board-sections {
+        gap: 30px;
+    }
+    
+    .community-right {
+        gap: 20px;
+    }
+    
+    .partner-logo {
+        padding: 30px 30px;
+    }
+    
+    .partners-row {
+        margin: 30px 0;
+    }
+}
+
+/* 14-inch MacBook (1512px width) */
+@media (min-width: 1441px) and (max-width: 1512px) {
+    .hero-logo {
+        width: 185px;
+        height: 214px;
+    }
+    
+    .hero-brand-img {
+        width: 221px;
+    }
+    
+    .brand-title {
+        font-size: 41px;
+    }
+    
+    .section-title {
+        font-size: 41px;
+    }
+    
+    .iphone-mockup {
+        width: 268px;
+    }
+    
+    .activities-grid {
+        height: 47vh;
+    }
+    
+    .community-content {
+        padding: 32px;
+        gap: 32px;
+    }
+}
+
+/* 15-inch MacBook (1680px width) */
+@media (min-width: 1513px) and (max-width: 1680px) {
+    .hero-logo {
+        width: 205px;
+        height: 237px;
+    }
+    
+    .hero-brand-img {
+        width: 245px;
+    }
+    
+    .brand-title {
+        font-size: 45px;
+    }
+    
+    .section-title {
+        font-size: 45px;
+    }
+    
+    .iphone-mockup {
+        width: 298px;
+    }
+    
+    .activities-grid {
+        height: 52vh;
+    }
+    
+    .community-content {
+        padding: 35px;
+        gap: 35px;
+    }
+}
+
+/* 27-inch and larger screens - keep original sizes */
+@media (min-width: 1920px) {
+    /* Original sizes maintained */
+}
+
 
 /* Responsive Design */
 @media (max-width: 900px) {
