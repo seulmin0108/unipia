@@ -1,7 +1,5 @@
 # UNIPIA - Your Campus Hub
 
-UNIPIA는 대학생들을 위한 통합 캠퍼스 허브 애플리케이션의 랜딩 페이지입니다.
-
 ## 최근 업데이트 (2024-12-19)
 
 ### 주요 개선사항
@@ -214,3 +212,4 @@ add_header Referrer-Policy "strict-origin-when-cross-origin";
 - [ ] UK GDPR 준수를 위한 보안 헤더가 설정되었는지 확인
 - [ ] 도메인 연결이 완료되었는지 확인
 - [ ] 백업 및 모니터링이 설정되었는지 확인
+
