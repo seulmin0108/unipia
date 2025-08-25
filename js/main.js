@@ -5,6 +5,60 @@ let currentSlide = 1;
 const totalSlides = 4;
 let isAnimating = false;
 
+// changeSlide 함수를 전역 스코프에 선언
+window.changeSlide = function(direction) {
+    // Prevent multiple clicks during animation
+    if (isAnimating) return;
+    isAnimating = true;
+    
+    const currentSlideElement = document.querySelector(`.slide-content[data-slide="${currentSlide}"]`);
+    
+    // Calculate new slide
+    let newSlide = currentSlide + direction;
+    
+    // Loop around if necessary
+    if (newSlide > totalSlides) {
+        newSlide = 1;
+    } else if (newSlide < 1) {
+        newSlide = totalSlides;
+    }
+    
+    const newSlideElement = document.querySelector(`.slide-content[data-slide="${newSlide}"]`);
+    
+    // Set up the new slide position
+    if (direction > 0) {
+        // Moving forward
+        newSlideElement.classList.remove('prev');
+        newSlideElement.classList.add('next');
+    } else {
+        // Moving backward
+        newSlideElement.classList.remove('next');
+        newSlideElement.classList.add('prev');
+    }
+    
+    // Force reflow
+    newSlideElement.offsetHeight;
+    
+    // Start animation
+    currentSlideElement.classList.remove('active');
+    if (direction > 0) {
+        currentSlideElement.classList.add('prev');
+    } else {
+        currentSlideElement.classList.add('next');
+    }
+    
+    newSlideElement.classList.remove('prev', 'next');
+    newSlideElement.classList.add('active');
+    
+    // Update current slide
+    currentSlide = newSlide;
+    
+    // Reset animation flag
+    setTimeout(() => {
+        isAnimating = false;
+    }, 600);
+};
+
 // 전역 오류 처리
 window.addEventListener('error', function(e) {
     console.error('JavaScript Error:', e.error);
@@ -72,10 +126,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 휠 아래로 = 왼쪽 슬라이드, 휠 위로 = 오른쪽 슬라이드
                     if (event.deltaY > 0) {
                         // 휠 아래로 = 왼쪽 슬라이드
-                        changeSlide(-1);
+                        window.changeSlide(-1);
                     } else {
                         // 휠 위로 = 오른쪽 슬라이드
-                        changeSlide(1);
+                        window.changeSlide(1);
                     }
                     return;
                 }
@@ -115,59 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 800);
     }
 
-    // changeSlide 함수
-    function changeSlide(direction) {
-        // Prevent multiple clicks during animation
-        if (isAnimating) return;
-        isAnimating = true;
-        
-        const currentSlideElement = document.querySelector(`.slide-content[data-slide="${currentSlide}"]`);
-        
-        // Calculate new slide
-        let newSlide = currentSlide + direction;
-        
-        // Loop around if necessary
-        if (newSlide > totalSlides) {
-            newSlide = 1;
-        } else if (newSlide < 1) {
-            newSlide = totalSlides;
-        }
-        
-        const newSlideElement = document.querySelector(`.slide-content[data-slide="${newSlide}"]`);
-        
-        // Set up the new slide position
-        if (direction > 0) {
-            // Moving forward
-            newSlideElement.classList.remove('prev');
-            newSlideElement.classList.add('next');
-        } else {
-            // Moving backward
-            newSlideElement.classList.remove('next');
-            newSlideElement.classList.add('prev');
-        }
-        
-        // Force reflow
-        newSlideElement.offsetHeight;
-        
-        // Start animation
-        currentSlideElement.classList.remove('active');
-        if (direction > 0) {
-            currentSlideElement.classList.add('prev');
-        } else {
-            currentSlideElement.classList.add('next');
-        }
-        
-        newSlideElement.classList.remove('prev', 'next');
-        newSlideElement.classList.add('active');
-        
-        // Update current slide
-        currentSlide = newSlide;
-        
-        // Reset animation flag
-        setTimeout(() => {
-            isAnimating = false;
-        }, 600);
-    }
+    // changeSlide 함수 - 이미 전역 스코프에 정의되어 있으므로 내부에서 그냥 호출
 
     // ===================================
     // 드롭다운 메뉴 기능
@@ -217,7 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 슬라이드 전환
             if (slideDifference !== 0) {
-                changeSlide(slideDifference);
+                window.changeSlide(slideDifference);
             }
         });
     });
