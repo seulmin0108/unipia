@@ -1,3 +1,9 @@
+/* CSS Variables for App Store Links */
+:root {
+    --app-store-link: "https://apps.apple.com/us/app/unipia/id1608830229?l=ko";
+    --google-play-link: "https://play.google.com/store/apps/details?id=com.unipia.unipia&hl=ko";
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -13,7 +19,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -24,7 +30,11 @@ html {
 
 
 .hero, .community, .activities {
+    height: 100vh;
     min-height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
 }
 
 /* Header Styles */
@@ -37,16 +47,14 @@ html {
 }
 
 .nav-container {
-    /* 내용물을 담을 최대 너비 설정 */
     max-width: 1440px;
-    /* 컨테이너 자체를 중앙 정렬 */
     margin: 0 auto;
 
-    height: 100%; /* 부모 높이를 그대로 사용 */
+    height: 100%; 
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 0 24px; /* 좌우 여백 */
+    padding: 0 24px;
 }
 
 .nav-left{justify-self:start; 
@@ -72,14 +80,14 @@ html {
 }
 
 .nav-center {
-  display: flex;  /* 가로 배치 */
-  justify-content: center;  /* 중앙 정렬 */
-  align-items: center;  /* 세로 중앙 정렬 */
-  gap: 50px;  /* 두 메뉴 항목 사이에 간격 */
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 50px; 
 }
 
 .nav-feature {
-  margin-bottom: 0px; /* 위쪽 간격 */
+  margin-bottom: 0px;
 }
 
 .nav-business {
@@ -92,7 +100,7 @@ html {
   color: #404357;
   text-decoration: none;
   display: inline-block;
-  text-align: center;  /* 중앙 정렬 */
+  text-align: center; 
   padding: 10px;
 }
 
@@ -113,20 +121,19 @@ html {
 .icon-btn svg circle[fill]{fill:#34384c}
 
 /*Menu section*/
-/* 메뉴 버튼과 드롭다운을 감싸는 컨테이너 */
 .nav-menu-container {
-    position: relative; /* 드롭다운 메뉴의 기준점이 됨 */
+    position: relative;
 }
 
 /* 드롭다운 메뉴 (기본 상태: 숨김) */
 .dropdown-menu {
     position: absolute;
-    top: 120%; /* 아이콘 아래에 위치 (값 조절 가능) */
-    right: 0;  /* 오른쪽 정렬 */
+    top: 120%; 
+    right: 0; 
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 200px; /* 메뉴 너비 */
+    width: 200px;
     padding: 8px 0;
     z-index: 20;
 
@@ -161,7 +168,7 @@ html {
 /* Hero Section */
 .hero {
     background: white;
-    padding: 12% 0 15.5%;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +178,11 @@ html {
 .hero-container {
     width: 100%;
     max-width: 1200px;
+    height: 100%;
     padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
@@ -197,7 +208,7 @@ html {
 
 .hero-brand-img {
     width: 280px;
-    margin-top: 0px;    /* Increase to move it down */
+    margin-top: 0px; 
     margin-bottom: 20px;
 
     height: auto;
@@ -259,6 +270,10 @@ html {
     transform:translateZ(0)
 }
 
+.app-btn {
+    cursor: pointer;
+}
+
 .app-btn img {
     height: 58px;
     border-radius: 8px;
@@ -275,7 +290,7 @@ html {
     background: #f5f5f5;
     display: flex;
     align-items: center;
-    padding: 4% 0 8%;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
@@ -283,14 +298,13 @@ html {
 .community-container {
     width: 100%;
     max-width: 1400px;
+    height: 100%;
     margin: 0 auto;
     padding: 0 20px;
-    min-height: 700px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    
 }
 
 /* Slide Content */
@@ -367,13 +381,20 @@ html {
     color: #000;
 }
 
-.community-left .section-title {
-    font-size: 52px;
-    margin-bottom: 0;
-    margin-top: 0;
-    padding-left: 0;
+/* Section Title Container - Independent positioning */
+.section-title-container {
     position: absolute;
-    top: 0;
+    top: 12%;
+    left:10;
+    z-index: 10;
+    width: 100%;
+}
+
+.section-title-container .section-title {
+    font-size: 52px;
+    margin: 0;
+    padding: 0;
+    color: #000;
 }
 
 .community-left h2{
@@ -394,20 +415,39 @@ html {
     left: 0 !important;
 }
 
+/* Coming Soon center positioning */
+#coming-soon-section .community-center {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Coming Soon iPhone mockup specific size */
+#coming-soon-section .iphone-mockup {
+    width: 400px; 
+    height: auto;
+    object-fit: contain;
+}
+
 .board-sections {
-    margin-top: 220px;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    justify-content: center;
+    gap: 40px;
+    height: 100%;
 }
 
 .community-content {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    gap: 60px;
-    padding: 60px 40px 0;
+    gap: 40px;
+    padding: 40px;
     max-width: 1400px;
+    height: calc(100vh - 80px);
     margin: 0 auto;
 }
 
@@ -460,8 +500,8 @@ html {
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    margin: 50px 30px 0;
+    align-items: center;
+    margin: 0 30px;
     position: relative;
 }
 
@@ -480,7 +520,7 @@ html {
     transform: translate(-50%, -50%);
     text-align: center;
     pointer-events: none;
-    display: none; /* Hide overlay text on mockups */
+    display: none; 
 }
 
 .mockup-overlay h3 {
@@ -500,9 +540,9 @@ html {
     max-width: 350px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    justify-content: center;
+    gap: 30px;
     padding-left: 20px;
-    padding-top: 200px;
 }
 
 .feature-box {
@@ -541,31 +581,33 @@ html {
     background: white;
     display: flex;
     align-items: center;
-    padding: 5% 0 12%; 
+    justify-content: center;
+    padding: 0;
     position: relative;
     overflow: hidden;
 }
 
 .activities .section-title{
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .activities-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 5%;
 }
 
 /* Vertical lines on sides */
 
 .activities-grid {
     display: grid;
-    grid-template-rows: 240px 240px;
+    grid-template-rows: 1fr 1fr;
     gap: 12px;
     width: 100%;
-    max-height: 660px;
+    height: 60vh;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -662,36 +704,67 @@ html {
 
 /* Advertising Section */
 .advertising {
-    padding: 100px 0;
+    padding: 0;
     background: #f8f9fa;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .advertising .section-title{
     font-size: 54px;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 0;
+    margin-top: 3%;
 }
 
-/* 두 개의 광고 아이템을 가로로 배치하는 컨테이너 */
+/* Advertising Content - Vertical Layout */
 .advertising-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Advertising Images Container */
+.ad-images-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 60px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.ad-description-img-left,
+.ad-description-img-right {
+    width: 100%;
+    max-width: 510px;
+    height: auto;
+    display: block;
+}
+
+/* Descriptions Container */
+.ad-descriptions-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px; /* 두 광고 아이템 사이의 간격 */
-    margin-top: 10px;
+    gap: 60px;
     justify-items: center;
-}
-
-.ad-mockup{
-    text-align: center;
-}
-
-
-.ad-description-img {
+    align-items: start;
+    max-width: 1200px;
     width: 100%;
-    max-width: 570px;
-    height: auto;
-    margin: 0 auto 30px;
-    display: block;
+}
+
+.ad-description {
+    text-align: center;
 }
 
 .ad-description h3{
@@ -709,28 +782,30 @@ html {
 /* 폰 목업 스타일 */
 
 .phone-frame {
- /* ... 기존 .phone-frame 스타일 ... */
     width: 100%;
-    max-width: 320px; /* 폰 목업 크기 */
-    z-index: 2;/* 설명 박스보다 위에 오도록 설정 */
-    position: relative; /* z-index 적용을 위해 필요 */
+    max-width: 320px;
+    z-index: 2;
+    position: relative; 
     }
 
 /* Partners Section */
 .partners {
-    padding: 6% 0 6%;
+    padding: 0;
     background: white;
+    height: 100vh;
     min-height: 100vh;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .partners .section-title {
     font-size: 54px;
     text-align: center;
-    
-    margin-bottom: 10%;
+    margin-bottom: 60px;
 }
 
 /* 모든 로고 줄의 기본 스타일 */
@@ -742,8 +817,8 @@ html {
 
 /* 고정된 로고 줄 스타일 */
 .static-row {
-    justify-content: center; /* 로고들을 가운데 정렬 */
-    gap: 40px; /* 로고 사이 간격 */
+    justify-content: center; 
+    gap: 40px; 
 }
 
 /* 스크롤되는 로고 줄 스타일 */
@@ -755,7 +830,7 @@ html {
 
 .partners-track {
     display: flex;
-    flex-shrink: 0; /* 줄어들지 않도록 설정 */
+    flex-shrink: 0;
 }
 
 /* 로고 개별 스타일 */
@@ -763,15 +838,15 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px 40px; /* 로고 좌우 여백 */
-    height: 80px; /* 로고를 담는 박스 높이 */
-    max-height: 180px; /* 이미지 최대 높이 */
-    max-width: 300px; /* 이미지 최대 너비 */
+    padding: 40px 40px; 
+    height: 80px; 
+    max-height: 180px; 
+    max-width: 300px; 
 }
 
 .partner-logo img {
-    max-height: 180px; /* 이미지 최대 높이 */
-    max-width: 280px; /* 이미지 최대 너비 */
+    max-height: 180px; 
+    max-width: 280px;
 }
 
 .partner-logo:hover img {
@@ -894,6 +969,10 @@ html {
     align-items: center;
 }
 
+.footer-app-btn {
+    cursor: pointer;
+}
+
 .footer-app-btn img {
     height: 55px;
     transition: transform 0.3s;
@@ -902,6 +981,199 @@ html {
 .footer-app-btn:hover img {
     transform: scale(1.08);
 }
+
+
+
+/* 13-inch MacBook (1440px width) */
+@media (max-width: 1440px) {
+    .hero-logo {
+        width: 175px;
+        height: 203px;
+    }
+    
+    .hero-brand-img {
+        width: 210px;
+    }
+    
+    .brand-title {
+        font-size: 39px;
+    }
+    
+    .app-description {
+        font-size: 14px;
+        margin-bottom: 5%;
+    }
+    
+    .app-btn img {
+        height: 44px;
+    }
+    
+    .section-title {
+        font-size: 39px;
+    }
+    
+    .community-left .section-title {
+        font-size: 39px;
+    }
+    
+    .iphone-mockup {
+        width: 255px;
+    }
+    
+    .board-section h3 {
+        font-size: 17px;
+    }
+    
+    .board-list li {
+        font-size: 12px;
+    }
+    
+    .feature-box h4 {
+        font-size: 17px;
+    }
+    
+    .feature-box p {
+        font-size: 12px;
+    }
+    
+    .activities-grid {
+        height: 45vh;
+        gap: 8px;
+    }
+    
+    .advertising .section-title,
+    .partners .section-title {
+        font-size: 40px;
+        margin-bottom: 30px;
+    }
+    
+    .ad-description-img {
+        max-width: 428px;
+    }
+    
+    .ad-description h3 {
+        font-size: 20px;
+    }
+    
+    .ad-description p {
+        font-size: 12px;
+    }
+    
+    .footer-touch h2 {
+        font-size: 39px;
+    }
+    
+    .footer-touch p {
+        font-size: 14px;
+    }
+    
+    .footer-download-section h3 {
+        font-size: 28px;
+        margin-bottom: 25px;
+    }
+    
+    .contact-btn {
+        font-size: 16px;
+        padding: 10px 40px;
+    }
+    
+    .footer-app-btn img {
+        height: 42px;
+    }
+    
+    .community-content {
+        padding: 30px;
+        gap: 30px;
+    }
+    
+    .board-sections {
+        gap: 30px;
+    }
+    
+    .community-right {
+        gap: 20px;
+    }
+    
+    .partner-logo {
+        padding: 30px 30px;
+    }
+    
+    .partners-row {
+        margin: 30px 0;
+    }
+}
+
+/* 14-inch MacBook (1512px width) */
+@media (min-width: 1441px) and (max-width: 1512px) {
+    .hero-logo {
+        width: 185px;
+        height: 214px;
+    }
+    
+    .hero-brand-img {
+        width: 221px;
+    }
+    
+    .brand-title {
+        font-size: 41px;
+    }
+    
+    .section-title {
+        font-size: 41px;
+    }
+    
+    .iphone-mockup {
+        width: 268px;
+    }
+    
+    .activities-grid {
+        height: 47vh;
+    }
+    
+    .community-content {
+        padding: 32px;
+        gap: 32px;
+    }
+}
+
+/* 15-inch MacBook (1680px width) */
+@media (min-width: 1513px) and (max-width: 1680px) {
+    .hero-logo {
+        width: 205px;
+        height: 237px;
+    }
+    
+    .hero-brand-img {
+        width: 245px;
+    }
+    
+    .brand-title {
+        font-size: 45px;
+    }
+    
+    .section-title {
+        font-size: 45px;
+    }
+    
+    .iphone-mockup {
+        width: 298px;
+    }
+    
+    .activities-grid {
+        height: 52vh;
+    }
+    
+    .community-content {
+        padding: 35px;
+        gap: 35px;
+    }
+}
+
+/* 27-inch and larger screens - keep original sizes */
+@media (min-width: 1920px) {
+    /* Original sizes maintained */
+}
+
 
 /* Responsive Design */
 @media (max-width: 900px) {

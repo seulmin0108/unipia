@@ -1,11 +1,27 @@
+
+
 // Slide functionality
 let currentSlide = 1;
 const totalSlides = 4;
 let isAnimating = false;
 
+// 전역 오류 처리
+window.addEventListener('error', function(e) {
+    console.error('JavaScript Error:', e.error);
+    console.error('Error details:', {
+        message: e.message,
+        filename: e.filename,
+        lineno: e.lineno,
+        colno: e.colno
+    });
+});
 
-// 즉시 실행 함수로 변수 충돌 방지
-(function() {
+// DOM이 완전히 로드된 후 실행
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== UNIPIA JavaScript Initialization ===');
+    console.log('DOM loaded, initializing JavaScript...');
+    console.log('Current timestamp:', new Date().toISOString());
+    
     // 스크롤 애니메이션이 진행 중인지 확인하는 변수
     let isScrolling = false;
     // 모든 섹션을 가져옴
@@ -14,6 +30,7 @@ let isAnimating = false;
     let currentSectionIndex = 0;
 
     // 휠 이벤트 감지
+    console.log('Adding wheel event listener...');
     window.addEventListener('wheel', function(event) {
         // 애니메이션 중이면 아무것도 안 함
         if (isScrolling) {
@@ -21,7 +38,51 @@ let isAnimating = false;
             return;
         }
 
-        // event.deltaY > 0 이면 아래로 스크롤, 음수면 위로 스크롤
+        // Shift 키를 누른 상태에서 휠을 돌리면 슬라이드 전환
+        if (event.shiftKey) {
+            event.preventDefault();
+            console.log('=== Shift + Wheel Event Detected ===');
+            console.log('Event details:', {
+                shiftKey: event.shiftKey,
+                deltaY: event.deltaY,
+                deltaX: event.deltaX,
+                type: event.type
+            });
+            
+            // 현재 community 섹션에 있는지 확인
+            const communitySection = document.querySelector('.community');
+            console.log('Community section element:', communitySection);
+            
+            if (communitySection) {
+                const rect = communitySection.getBoundingClientRect();
+                // 화면의 절반 이상이 community 섹션에 있을 때 슬라이드 전환 활성화
+                const isInCommunitySection = rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+                
+                console.log('Community section found:', {
+                    rectTop: rect.top,
+                    rectBottom: rect.bottom,
+                    windowHeight: window.innerHeight,
+                    isInCommunitySection: isInCommunitySection,
+                    isAnimating: isAnimating,
+                    deltaY: event.deltaY
+                });
+                
+                if (isInCommunitySection && !isAnimating) {
+                    console.log('Changing slide, direction:', event.deltaY > 0 ? 'left' : 'right');
+                    // 휠 아래로 = 왼쪽 슬라이드, 휠 위로 = 오른쪽 슬라이드
+                    if (event.deltaY > 0) {
+                        // 휠 아래로 = 왼쪽 슬라이드
+                        changeSlide(-1);
+                    } else {
+                        // 휠 위로 = 오른쪽 슬라이드
+                        changeSlide(1);
+                    }
+                    return;
+                }
+            }
+        }
+
+        // 일반적인 섹션 스크롤 (Shift 키를 누르지 않은 경우)
         if (event.deltaY > 0) {
             // 아래로 이동
             if (currentSectionIndex < sections.length - 1) {
@@ -54,65 +115,59 @@ let isAnimating = false;
         }, 800);
     }
 
-})();
-
-function changeSlide(direction) {
-    // Prevent multiple clicks during animation
-    if (isAnimating) return;
-    isAnimating = true;
-    
-    const currentSlideElement = document.querySelector(`.slide-content[data-slide="${currentSlide}"]`);
-    
-    // Calculate new slide
-    let newSlide = currentSlide + direction;
-    
-    // Loop around if necessary
-    if (newSlide > totalSlides) {
-        newSlide = 1;
-    } else if (newSlide < 1) {
-        newSlide = totalSlides;
+    // changeSlide 함수
+    function changeSlide(direction) {
+        // Prevent multiple clicks during animation
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        const currentSlideElement = document.querySelector(`.slide-content[data-slide="${currentSlide}"]`);
+        
+        // Calculate new slide
+        let newSlide = currentSlide + direction;
+        
+        // Loop around if necessary
+        if (newSlide > totalSlides) {
+            newSlide = 1;
+        } else if (newSlide < 1) {
+            newSlide = totalSlides;
+        }
+        
+        const newSlideElement = document.querySelector(`.slide-content[data-slide="${newSlide}"]`);
+        
+        // Set up the new slide position
+        if (direction > 0) {
+            // Moving forward
+            newSlideElement.classList.remove('prev');
+            newSlideElement.classList.add('next');
+        } else {
+            // Moving backward
+            newSlideElement.classList.remove('next');
+            newSlideElement.classList.add('prev');
+        }
+        
+        // Force reflow
+        newSlideElement.offsetHeight;
+        
+        // Start animation
+        currentSlideElement.classList.remove('active');
+        if (direction > 0) {
+            currentSlideElement.classList.add('prev');
+        } else {
+            currentSlideElement.classList.add('next');
+        }
+        
+        newSlideElement.classList.remove('prev', 'next');
+        newSlideElement.classList.add('active');
+        
+        // Update current slide
+        currentSlide = newSlide;
+        
+        // Reset animation flag
+        setTimeout(() => {
+            isAnimating = false;
+        }, 600);
     }
-    
-    const newSlideElement = document.querySelector(`.slide-content[data-slide="${newSlide}"]`);
-    
-    // Set up the new slide position
-    if (direction > 0) {
-        // Moving forward
-        newSlideElement.classList.remove('prev');
-        newSlideElement.classList.add('next');
-    } else {
-        // Moving backward
-        newSlideElement.classList.remove('next');
-        newSlideElement.classList.add('prev');
-    }
-    
-    // Force reflow
-    newSlideElement.offsetHeight;
-    
-    // Start animation
-    currentSlideElement.classList.remove('active');
-    if (direction > 0) {
-        currentSlideElement.classList.add('prev');
-    } else {
-        currentSlideElement.classList.add('next');
-    }
-    
-    newSlideElement.classList.remove('prev', 'next');
-    newSlideElement.classList.add('active');
-    
-    // Update current slide
-    currentSlide = newSlide;
-    
-    // Reset animation flag
-    setTimeout(() => {
-        isAnimating = false;
-    }, 600);
-}
-
-
-// Initialize slides on page load
-// HTML 문서가 모두 로드되면 실행합니다.
-document.addEventListener('DOMContentLoaded', function() {
 
     // ===================================
     // 드롭다운 메뉴 기능
@@ -120,24 +175,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuContainer = document.querySelector('.nav-menu-container');
     const dropdownMenu = document.querySelector('.dropdown-menu');
 
-    // 메뉴 영역에 마우스를 올리면 'show' 클래스 추가
-    menuContainer.addEventListener('mouseenter', () => {
-        dropdownMenu.classList.add('show');
-    });
+    if (menuContainer && dropdownMenu) {
+        // 메뉴 영역에 마우스를 올리면 'show' 클래스 추가
+        menuContainer.addEventListener('mouseenter', () => {
+            dropdownMenu.classList.add('show');
+        });
 
-    // 메뉴 영역에서 마우스가 벗어나면 'show' 클래스 제거
-    menuContainer.addEventListener('mouseleave', () => {
-        dropdownMenu.classList.remove('show');
-    });
-
+        // 메뉴 영역에서 마우스가 벗어나면 'show' 클래스 제거
+        menuContainer.addEventListener('mouseleave', () => {
+            dropdownMenu.classList.remove('show');
+        });
+    }
 
     // ===================================
     // 드롭다운 메뉴 클릭 시 슬라이드 이동 기능
     // ===================================
     const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
-    const slides = document.querySelectorAll('.slide-content');
-    const totalSlides = slides.length;
-    let currentSlide = 1; // 현재 보이는 슬라이드 번호 (1번부터 시작)
 
     // 각 메뉴 링크에 클릭 이벤트 추가
     dropdownLinks.forEach(link => {
@@ -158,201 +211,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 'Community' 링크는 href가 '#community-container' 이므로 여기에 해당
                 targetSlide = 1;
             }
-            
-            // 현재 슬라이드와 목표 슬라이드가 다를 경우에만 슬라이드 변경
-            if (targetSlide !== currentSlide) {
-                // 모든 슬라이드에서 'active' 클래스 제거
-                slides.forEach(slide => {
-                    slide.classList.remove('active');
-                });
 
-                // 목표 슬라이드에 'active' 클래스 추가
-                const newSlideElement = document.querySelector(`.slide-content[data-slide="${targetSlide}"]`);
-                if (newSlideElement) {
-                    newSlideElement.classList.add('active');
-                    currentSlide = targetSlide; // 현재 슬라이드 번호 업데이트
-                }
+            // 현재 슬라이드와 목표 슬라이드의 차이를 계산
+            const slideDifference = targetSlide - currentSlide;
+            
+            // 슬라이드 전환
+            if (slideDifference !== 0) {
+                changeSlide(slideDifference);
             }
         });
     });
-});
 
-
-
-
-
-$(document).ready(function() {
-    
-    // ===========================
-    // Tab Navigation Functionality
-    // ===========================
-    $('.tab-btn').click(function() {
-        // Remove active class from all tabs and panes
-        $('.tab-btn').removeClass('active');
-        $('.tab-pane').removeClass('active');
-        
-        // Add active class to clicked tab
-        $(this).addClass('active');
-        
-        // Show corresponding pane
-        const tabId = $(this).data('tab');
-        $('#' + tabId).addClass('active');
-    });
-    
-    // ===========================
-    // Activities Slider Configuration
-    // ===========================
-    $('.activities-slider').slick({
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        pauseOnHover: true,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-    
-    // ===========================
-    // Partners Slider Configuration (First Row)
-    // ===========================
-    $('.partners-slider').slick({
-        dots: false,
-        infinite: true,
-        speed: 3000,  // 첫 번째 줄 속도
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 0,
-        cssEase: 'linear',
-        pauseOnHover: false,
-        arrows: false,
-        variableWidth: false,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-    
-    // ===========================
-    // Partners Slider Configuration (Second Row)
-    // ===========================
-    $('.partners-slider-2').slick({
-        dots: false,
-        infinite: true,
-        speed: 4000,  // 두 번째 줄 다른 속도
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 0,
-        cssEase: 'linear',
-        pauseOnHover: false,
-        arrows: false,
-        rtl: true, // Reverse direction for variety
-        variableWidth: false,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-    
-    // ===========================
-    // Smooth Scroll for Navigation Links
-    // ===========================
-    $('a[href^="#"]').on('click', function(event) {
-        const target = $(this.getAttribute('href'));
-        if(target.length) {
-            event.preventDefault();
-            $('html, body').stop().animate({
-                scrollTop: target.offset().top - 80
-            }, 800);
-        }
-    });
-    
-    // ===========================
+    // ===================================
     // Contact Form Handling
-    // ===========================
-    $('#contactForm').on('submit', function(e) {
-        e.preventDefault();
-        // Redirect to coming soon page when form is submitted
-        window.location.href = 'coming-soon.html';
-    });
+    // ===================================
+    if (typeof $ !== 'undefined') {
+        $('#contactForm').on('submit', function(e) {
+            e.preventDefault();
+            // Redirect to coming soon page when form is submitted
+            window.location.href = 'coming-soon.html';
+        });
+    } else {
+        console.warn('jQuery not loaded, contact form handling disabled');
+    }
     
-    // ===========================
+    // ===================================
     // Header Scroll Effect
-    // ===========================
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 50) {
-            $('.header').addClass('scrolled');
-        } else {
-            $('.header').removeClass('scrolled');
-        }
-    });
+    // ===================================
+    if (typeof $ !== 'undefined') {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $('.header').addClass('scrolled');
+            } else {
+                $('.header').removeClass('scrolled');
+            }
+        });
+    } else {
+        console.warn('jQuery not loaded, header scroll effect disabled');
+    }
     
-    // ===========================
+    // ===================================
     // Animate on Scroll
-    // ===========================
+    // ===================================
     function animateOnScroll() {
         $('.animate-on-scroll').each(function() {
             const elementTop = $(this).offset().top;
@@ -369,15 +269,9 @@ $(document).ready(function() {
     $(window).on('scroll', animateOnScroll);
     animateOnScroll(); // Check on page load
     
-    // ===========================
-    // Mobile Menu Toggle (Future Enhancement)
-    // ===========================
-    // Placeholder for mobile menu functionality
-    // Can be implemented when mobile menu button is added
-    
-    // ===========================
+    // ===================================
     // Partner Links Configuration
-    // ===========================
+    // ===================================
     // 나중에 실제 링크로 쉽게 변경 가능
     const partnerLinks = {
         'The Sun': 'https://www.thesun.co.uk/',
@@ -392,23 +286,23 @@ $(document).ready(function() {
         'DW': 'https://www.dw.com/'
     };
     
-    // ===========================
+    // ===================================
     // App Store Links Configuration
-    // ===========================
+    // ===================================
     // 실제 앱 링크가 준비되면 아래 URL만 변경하면 됨
     const appLinks = {
         appStore: 'coming-soon.html', // 'https://apps.apple.com/app/unipia'로 변경
         googlePlay: 'coming-soon.html' // 'https://play.google.com/store/apps/details?id=com.unipia'로 변경
     };
     
-    // ===========================
+    // ===================================
     // Initialize Tooltips (if needed)
-    // ===========================
+    // ===================================
     $('[data-toggle="tooltip"]').tooltip();
     
-    // ===========================
+    // ===================================
     // Lazy Loading for Images (Performance)
-    // ===========================
+    // ===================================
     const images = document.querySelectorAll('img[data-src]');
     const imageOptions = {
         threshold: 0,
@@ -430,4 +324,34 @@ $(document).ready(function() {
         images.forEach(img => imageObserver.observe(img));
     }
     
+    console.log('JavaScript initialization completed');
+    
+    // 간단한 테스트용 이벤트 리스너
+    document.addEventListener('keydown', function(event) {
+        if (event.shiftKey) {
+            console.log('Shift key pressed down');
+        }
+    });
+    
+    document.addEventListener('keyup', function(event) {
+        if (!event.shiftKey) {
+            console.log('Shift key released');
+        }
+    });
+    
+}); // DOMContentLoaded 끝
+
+// 추가 안전장치 - window.onload 이벤트
+window.addEventListener('load', function() {
+    console.log('=== Window Load Event ===');
+    console.log('All resources loaded, checking JavaScript functionality...');
+    
+    // Community 섹션 재확인
+    const communitySection = document.querySelector('.community');
+    console.log('Community section on window load:', communitySection);
+    
+    // 이벤트 리스너 재확인
+    console.log('Testing wheel event listener...');
+    const testEvent = new WheelEvent('wheel', { deltaY: 100, shiftKey: true });
+    console.log('Test event created:', testEvent);
 });
