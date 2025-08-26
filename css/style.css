@@ -92,6 +92,7 @@ html {
 
 .nav-business {
   text-align: center;
+  line-height: 1.4;
 }
 
 .nav-link {
@@ -462,10 +463,15 @@ html {
     justify-content: flex-start;
     padding-top: 0;
     position: relative;
+    margin-top: 22%;
+}
+
+#employment-section .community-left {
+    margin-top: 30%;
 }
 
 .board-section h3 {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     margin-bottom: 18px;
     color: #000;
@@ -480,7 +486,7 @@ html {
     color: #555;
     font-size: 14px;
     font-weight: 400;
-    line-height: 2;
+    line-height: 1.4;
     margin-bottom: 4px;
     display: flex;
     align-items: center;
@@ -537,12 +543,13 @@ html {
 /* Right Features */
 .community-right {
     flex: 1;
-    max-width: 350px;
+    max-width: 370px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 30px;
+    gap: 80px;
     padding-left: 20px;
+    margin-top: 10%;
 }
 
 .feature-box {
@@ -557,11 +564,11 @@ html {
     background: #6B46FF;
     border-radius: 50%;
     flex-shrink: 0;
-    margin-top: 5px;
+    margin-top: 3.5%;
 }
 
 .feature-box h4 {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     margin-bottom: 12px;
     color: #000;
