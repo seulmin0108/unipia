@@ -1,5 +1,12 @@
 # UNIPIA - Your Campus Hub
 
+## 최근 업데이트 (2025-08-26 19:29)
+
+### 주요 개선사항
+- **Employment 아이폰 업로드**
+- **Community Section 줄바꿈 및 폰트 크기 세부 디테일 개선** : 그 외 모든 세부 디테일 수정 (Figma 디자인에 맞춰서)
+
+
 ## 최근 업데이트 (2025-08-25 14:35)
 
 ### 주요 개선사항
@@ -212,6 +219,7 @@ add_header Referrer-Policy "strict-origin-when-cross-origin";
 - [ ] UK GDPR 준수를 위한 보안 헤더가 설정되었는지 확인
 - [ ] 도메인 연결이 완료되었는지 확인
 - [ ] 백업 및 모니터링이 설정되었는지 확인
+
 
 
 
